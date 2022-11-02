@@ -1,17 +1,23 @@
 import React from 'react';
+import { FaArrowRight, FaFontAwesome } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ServiceCard = ({service}) => {
     const {title, price, img} = service
     return (
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={img} alt="Shoes" />
+          <img src={img} className='h-[260px]' alt="" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
-          <p className='text-xl text-orange-500 font-semibold'>Price: ${price}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <div className="flex justify-between items-center">
+            <p className="text-xl text-orange-500 font-semibold">
+              Price: ${price}
+            </p>
+            <Link>
+              <FaArrowRight className="text-orange-500"></FaArrowRight>
+            </Link>
           </div>
         </div>
       </div>

@@ -4,7 +4,8 @@ import logo from '../../../assets/logo.svg'
 
 const Header = () => {
     const menuItem = <>
-    <Link className='font-semibold' to='/'>Home</Link>
+    <Link className='font-semibold mr-5' to='/'>Home</Link>
+    <Link className='font-semibold mr-5' to='/login'>Login</Link>
     </>
     return (
       <div className="navbar bg-base-100 h-20 mb-12 py-10">

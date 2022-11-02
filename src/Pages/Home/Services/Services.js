@@ -9,11 +9,11 @@ const Services = () => {
         .then(data => setServices(data))
     },[])
     return (
-      <div>
+      <div className='my-20'>
         <div className="text-center">
           <p className="text-2xl text-orange-500 font-bold">Service</p>
           <h2 className="text-5xl font-bold py-4 mt-0">Our Service Area</h2>
-          <p className='w-2/5 mx-auto mb-5'>
+          <p className='w-2/5 mx-auto mb-14'>
             The majority have suffered alteration in some form, by injected
             humour, or randomised words which don't look even slightly
             believable.
