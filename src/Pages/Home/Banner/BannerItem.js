@@ -20,8 +20,10 @@ const BannerItem = ({slide}) => {
           </p>
         </div>
         <div className="absolute flex justify-start transform -translate-y-1/2 left-24 top-2/3">
-          <button className="btn btn-secondary mr-5">Button</button>
-          <button className="btn btn-outline btn-secondary">Button</button>
+          <button className="btn btn-secondary mr-5">Discover More</button>
+          <button className="btn btn-outline btn-secondary">
+            Latest Project
+          </button>
         </div>
         <div className="absolute flex justify-end transform -translate-y-1/2 right-14 bottom-5">
           <a href={`#slide${prev}`} className="btn btn-circle mr-5">
