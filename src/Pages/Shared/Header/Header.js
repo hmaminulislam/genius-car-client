@@ -4,10 +4,10 @@ import logo from '../../../assets/logo.svg'
 
 const Header = () => {
     const menuItem = <>
-    <Link to='/'>Home</Link>
+    <Link className='font-semibold' to='/'>Home</Link>
     </>
     return (
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 h-20 mb-12 py-10">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -33,7 +33,7 @@ const Header = () => {
               {menuItem}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
             <img src={logo} alt="" />
           </Link>
         </div>
@@ -41,7 +41,7 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{menuItem}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <button className="btn btn-outline btn-secondary">Appointment</button>
         </div>
       </div>
     );
