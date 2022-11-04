@@ -1,10 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+  const {login} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || '/'
+
   const loginHandle = event => {
-    event.preventDefault()
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+    .then(result => {
+      navigate(from, {replace: true})
+      console.log(result.user)
+      form.reset()
+    })
+    .then(e => console.log(e))
   }
     return (
       <div className="hero my-20">

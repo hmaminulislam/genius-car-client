@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext)
     const signUpHandle = event => {
-        event.preventDefault()
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user)
+            form.reset()
+        })
+        .then(e => console.log(e))
     }
     return (
       <div className="hero my-20">
@@ -58,7 +70,7 @@ const SignUp = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn bg-orange-500 border-0 hover:bg-orange-600">
-                  Login
+                  Sign Up
                 </button>
               </div>
             </form>
