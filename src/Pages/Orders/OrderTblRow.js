@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const OrderTblRow = ({ order, deleteHandle, updataStatusHandle }) => {
   const [orderPodcut, setOrderProduct] = useState({});
   const { productId, productName, customer, price, status, email, _id } = order;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${productId}`)
+    fetch(`https://genius-car-server-one-beta.vercel.app/service/${productId}`)
       .then((res) => res.json())
       .then((data) => setOrderProduct(data));
   }, [productId]);
