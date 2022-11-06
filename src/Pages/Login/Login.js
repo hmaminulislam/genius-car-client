@@ -17,11 +17,24 @@ const Login = () => {
 
     login(email, password)
     .then(result => {
-      navigate(from, {replace: true})
-      console.log(result.user)
+      const currentUser =  {
+        email: result.user?.email
+      }
+      fetch("http://localhost:5000/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem('genius-token', data.token)
+          navigate(from, { replace: true });
+        });
       form.reset()
     })
-    .then(e => console.log(e))
+    .catch(e => console.log(e))
   }
     return (
       <div className="hero my-20">
