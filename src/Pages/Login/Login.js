@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { jwtApi } from "../../api";
 import img from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import GoogleSignIn from "../Shared/SocialSignIn/GoogleSignIn";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -20,18 +22,7 @@ const Login = () => {
         const currentUser = {
           email: result.user?.email,
         };
-        fetch("https://genius-car-server-one-beta.vercel.app/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem("genius-token", data.token);
-            navigate(from, { replace: true });
-          });
+        jwtApi(currentUser, navigate, from)
         form.reset();
       })
       .catch((e) => console.log(e));
@@ -86,6 +77,9 @@ const Login = () => {
               Sign Up
             </Link>
           </p>
+          <div>
+            <GoogleSignIn></GoogleSignIn>
+          </div>
         </div>
       </div>
     </div>
